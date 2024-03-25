@@ -73,7 +73,7 @@ export const useGridColumnHeaders = (props: UseGridColumnHeadersProps) => {
   const getFilterItem = React.useCallback(
     (colDef: GridStateColDef) => {
       const filterModelItem = filterModel?.items.find(
-        (it) => it.field === colDef.field && it.operator !== 'isAnyOf',
+        (it) => it.field === colDef.field && !["isAnyOf","containsAnyOf","notContainsAnyOf"].includes(it.operator),
       );
       if (filterModelItem != null) {
         // there's a valid `filterModelItem` for this column

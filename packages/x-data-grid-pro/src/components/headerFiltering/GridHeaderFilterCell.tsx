@@ -122,7 +122,7 @@ const GridHeaderFilterCell = React.forwardRef<HTMLDivElement, GridHeaderFilterCe
 
     // TODO: Support for `isAnyOf` operator
     const filterOperators =
-      colDef.filterOperators?.filter((operator) => operator.value !== 'isAnyOf') ?? [];
+      colDef.filterOperators?.filter((operator) => !["isAnyOf","containsAnyOf","notContainsAnyOf"].includes(operator.value)) ?? [];
     const filterModel = useGridSelector(apiRef, gridFilterModelSelector);
     const filterableColumnsLookup = useGridSelector(apiRef, gridFilterableColumnLookupSelector);
 
